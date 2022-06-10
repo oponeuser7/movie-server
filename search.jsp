@@ -2,15 +2,15 @@
 <%@include file="./dbconn.jsp"%>
 <%
     request.setCharacterEncoding("utf-8");
+	response.setHeader("Access-Control-Allow-Origin","*");
+	Statement stmt = null;
+    ResultSet rs = null;
+
     String title = request.getParameter("title");
-
-    Statement stmt = null;
-    Resultset rs = null;
-
     try {
         String query = "select title, director, release_date, runtime, rating, genre from movie";
         stmt = conn.createStatement();
-        stmt.executeQuery(sql);
+        rs = stmt.executeQuery(query);
         int key = 0; //json key
         out.println("{"); //json start
         while(rs.next()) {
