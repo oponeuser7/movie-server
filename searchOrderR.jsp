@@ -8,13 +8,14 @@
 
     String title = request.getParameter("title");
     try {
-        String query = "select title, director, release_date, runtime, rating, genre from movie";
+        String query = "select movie_id, title, director, release_date, runtime, rating, genre from movie order by release_date";
         stmt = conn.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE, java.sql.ResultSet.CONCUR_READ_ONLY);
         rs = stmt.executeQuery(query);
         int key = 0; //json key
         out.println("{"); //json start
         while(rs.next()) {
             out.println("\""+(key++)+"\": {");
+            out.println("\"movie_id\": \""+rs.getString("movie_id")+"\",");
             out.println("\"title\": \""+rs.getString("title")+"\",");
             out.println("\"director\": \""+rs.getString("director")+"\",");
             out.println("\"release_date\": \""+rs.getDate("release_date")+"\",");
