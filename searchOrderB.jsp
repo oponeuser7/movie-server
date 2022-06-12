@@ -6,7 +6,6 @@
 	Statement stmt = null;
     ResultSet rs = null;
 
-    String title = request.getParameter("title");
     try {
         String query = "select m.movie_id, title, release_date, director, runtime, rating, genre, nvl(count, 0) as count\n"
                         +"from movie m\n"

@@ -6,7 +6,6 @@
 	Statement stmt = null;
     ResultSet rs = null;
 
-    String title = request.getParameter("title");
     try {
         String query = "select movie_id, title, director, release_date, runtime, rating, genre from movie order by release_date";
         stmt = conn.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE, java.sql.ResultSet.CONCUR_READ_ONLY);
