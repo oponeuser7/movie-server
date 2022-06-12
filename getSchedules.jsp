@@ -6,13 +6,15 @@
 	Statement stmt = null;
     ResultSet rs = null;
 
-    String id = request.getParameter("id");
+    String mid = request.getParameter("mid");
+    String tid = request.getParameter("tid");
 
     try {
         String query = "select schedule_id, name, starting_time\n"
                         +"from schedule s, auditorium a\n"
                         +"where s.auditorium_id=a.auditorium_id\n"
-                        +"and s.theater_id="+id;
+                        +"and s.theater_id="+tid+"\n"
+                        +"and s.movie_id="+mid;
         stmt = conn.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE, java.sql.ResultSet.CONCUR_READ_ONLY);
         rs = stmt.executeQuery(query);
         int key = 0; //json key
