@@ -1,15 +1,10 @@
 <%@ page import="java.sql.*" %>
-<%@include file="./dbconn.jsp"%>
-<%
-    request.setCharacterEncoding("utf-8");
-	response.setHeader("Access-Control-Allow-Origin","*");
-	Statement stmt = null;
-    ResultSet rs = null;
+<%@include file="./custom.jsp"%>
 
+<%
     String movie_id = request.getParameter("id");
     try {
         String query = "select title, director, release_date, runtime, rating, genre from movie where movie_id="+movie_id;
-        stmt = conn.createStatement(java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE, java.sql.ResultSet.CONCUR_READ_ONLY);
         rs = stmt.executeQuery(query);
         if(rs.next()) {
             out.println("title: "+rs.getString("title"));
@@ -27,9 +22,7 @@
             out.println("error!");
         }
     } catch(SQLException ex) {
-        out.println("{");
-        out.println("SQLException: " + ex.getMessage());
-        out.println("}");
+        out.println("{SQLException: " + ex.getMessage()+"}");
     } finally {
         if(stmt!=null) stmt.close();
         if(conn!=null) conn.close();
