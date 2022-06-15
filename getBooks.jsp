@@ -8,7 +8,10 @@
                     +"inner join movie m on s.movie_id=m.movie_id\n"
                     +"inner join theater t  on s.theater_id=t.theater_id\n"
                     +"inner join auditorium a on s.auditorium_id=a.auditorium_id\n"
-                    +"where member_id="+uid;
+                    +"where canceled='false'\n"
+                    +"and starting_time>sysdate\n"
+                    +"and member_id="+uid+"\n"
+                    +"order by starting_time asc";
     String[] params = new String[] {"book_id", "title", "theater", "auditorium", "starting_time", "seats", "cash", "points","total"};
     String result = get(query, params, stmt);
     out.println(result);
