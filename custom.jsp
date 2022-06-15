@@ -9,6 +9,9 @@
 %>
 
 <%!
+
+    final String sysdate = "sysdate+interval '9' hour";
+
     String toJson(String[] params, ResultSet rs) {
         try {
             StringBuilder sb = new StringBuilder();
