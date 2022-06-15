@@ -12,7 +12,7 @@
     +"on m.movie_id=c.movie_id\n"
     +"order by count desc, release_date asc\n";
     String[] params = new String[] {"movie_id", "title", "release_date", "director", "runtime", "rating", "genre", "count"};
-    String result = get(query, parmas, stmt);
+    String result = get(query, params, stmt);
     out.println(result);
     if(stmt!=null) stmt.close();
     if(conn!=null) conn.close();
