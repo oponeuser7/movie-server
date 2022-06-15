@@ -20,7 +20,11 @@
             while(rs.next()) {
                 sb.append("\""+(key++)+"\": {");
                 for(int i=0; i<params.length; i++) {
-                    sb.append("\""+params[i]+"\": \""+rs.getString(params[i])+"\"");
+                    if(params[i].equals("release_date")) {
+                        sb.append("\""+params[i]+"\": \""+rs.getDate(params[i])+"\"");
+                    } else {
+                        sb.append("\""+params[i]+"\": \""+rs.getString(params[i])+"\"");
+                    }
                     if(i!=params.length-1) sb.append(",");
                 }
                 sb.append("}"+(rs.isLast() ? "" : ","));
