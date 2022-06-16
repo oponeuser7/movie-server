@@ -2,7 +2,7 @@
 
 <%
     String uid = request.getParameter("uid");
-    String query = "select book_id, m.title, t.name as theater, a.name as auditorium, starting_time, seats, cash, points, (cash+points) as total\n"
+    String query = "select book_id, m.title, t.name as theater, a.name as auditorium, starting_time, b.seats, cash, points, (cash+points) as total\n"
                     +"from book b\n"
                     +"inner join schedule s on b.schedule_id=s.schedule_id\n"
                     +"inner join movie m on s.movie_id=m.movie_id\n"
