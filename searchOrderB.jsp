@@ -10,6 +10,7 @@
     +"and s.movie_id = m.movie_id\n"
     +"group by m.movie_id) c\n"
     +"on m.movie_id=c.movie_id\n"
+    +"where m.release_date<=("+sysdate+")+interval '10' day\n"
     +"order by count desc, release_date asc\n";
     String[] params = new String[] {"movie_id", "title", "release_date", "director", "runtime", "rating", "genre", "count"};
     String result = get(query, params, stmt);
