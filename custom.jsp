@@ -46,4 +46,14 @@
             return ("{SQLException: " + ex.getMessage()+"}");
         }
     }
+
+    String post(String query, Statement stmt) {
+        try {
+            stmt.executeUpdate(query);
+            return "{SQLException: null}"
+        }
+        catch(SQLException ex) {
+            return "SQLException: "+ex.getMessage()+"}";
+        }
+    }
 %>
