@@ -33,7 +33,7 @@
             return sb.toString();
         }
         catch(SQLException ex) {
-            return ("{SQLException: " + ex.getMessage()+"}");
+            return ("SQLException: " + ex.getMessage());
         }
     }
 
@@ -43,17 +43,17 @@
             return toJson(params, rs);
         }
         catch(SQLException ex) {
-            return ("{SQLException: " + ex.getMessage()+"}");
+            return ("SQLException: " + ex.getMessage());
         }
     }
 
     String post(String query, Statement stmt) {
         try {
             stmt.executeUpdate(query);
-            return "{SQLException: null}"
+            return "SQLException: null";
         }
         catch(SQLException ex) {
-            return "SQLException: "+ex.getMessage()+"}";
+            return "SQLException: "+ex.getMessage();
         }
     }
 %>
